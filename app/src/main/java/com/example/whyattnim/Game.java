@@ -123,23 +123,19 @@ public class Game extends AppCompatActivity {
 
         public int AILogic(){
             int rv = 0;
-
-            if(stickCnt >= 13){
-                while(rv == 0) {
-                    rv = new Random().nextInt(3);
-                }
-            }else if(stickCnt == 12){
-                rv = 3;
-            } else if(stickCnt == 10 || stickCnt == 9 || stickCnt == 6 || stickCnt == 5 || stickCnt == 2 || stickCnt == 1){
+            int diffFromFour = stickCnt % 4;
+            
+            if (diffFromFour == 3) {
+                rv = 2;
+            }
+            else if (diffFromFour == 2) {
                 rv = 1;
-            }else if( stickCnt == 8){
+            }
+            else if (diffFromFour == 1) {
+                rv = 1;
+            }
+            else if (diffFromFour == 0) {
                 rv = 3;
-            }else if(stickCnt == 7 || stickCnt == 11){
-                rv = 2;
-            }else if(stickCnt == 4){
-                rv = 3;
-            }else if(stickCnt == 3){
-                rv = 2;
             }
 
             return rv;
